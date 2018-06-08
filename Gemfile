@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rspec", ">= 3.0.0"
 gem "rspec-rails"
 gem "bootstrap-sass"
+gem "erb2haml"
 gem "haml-rails"
 gem "rubocop"
 gem "shoulda-matchers"
