@@ -15,5 +15,6 @@ RSpec.describe User, type: :model do
     }
     it { is_expected.not_to allow_value("invalid").for(:email)}
     it { is_expected.to allow_value("a@a.com").for(:email)}
+    it { is_expected.to validate_uniqueness_of(:email) }
   end
 end
