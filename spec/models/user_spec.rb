@@ -17,4 +17,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to allow_value("a@a.com").for(:email)}
     it { is_expected.to validate_uniqueness_of(:email) }
   end
+
+  describe '#password' do
+    it { is_expected.to have_secure_password }
+  end
 end
