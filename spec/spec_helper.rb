@@ -7,6 +7,7 @@
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot time of your test suite on EVERY test run, even for an
+
 # individual file that may not need all of that loaded. Instead, consider making
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
@@ -94,3 +95,4 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
