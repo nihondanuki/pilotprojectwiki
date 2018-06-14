@@ -17,6 +17,6 @@ RSpec.describe User, type: :model do
 
   describe '#password' do
     it { is_expected.to have_secure_password }
-    it { is_expected.to validate_length_of(:password).is_at_least(9) }
+    it { is_expected.to validate_length_of(:password).is_at_least(9).is_at_most(200) }
   end
 end
