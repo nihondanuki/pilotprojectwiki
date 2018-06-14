@@ -39,6 +39,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem "pry-byebug"                                                                                                                                                                
+  gem "pry-doc", require: false
+  gem "pry-rails"
 end
 
 group :development do
@@ -63,3 +66,4 @@ gem "shoulda-matchers"
 gem "jquery-rails"
 gem "simplecov"
 gem "factory_bot_rails"
+gem 'rails-controller-testing'
