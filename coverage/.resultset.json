@@ -22,6 +22,7 @@
         null,
         null,
         1,
+        0,
         null,
         null,
         null,
@@ -36,29 +37,15 @@
         null,
         null,
         1,
-        0,
+        3,
         null,
-        0,
-        0,
-        0,
-        0,
+        3,
+        3,
+        4,
+        2,
         null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        2,
         1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
         null,
         null,
         null,
@@ -71,6 +58,20 @@
         0,
         0,
         null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -81,7 +82,7 @@
         null,
         null,
         1,
-        0,
+        3,
         null,
         null
       ],
@@ -95,10 +96,8 @@
         1,
         1,
         1,
-<<<<<<< HEAD
-=======
         1,
->>>>>>> c8ef33e... change controller
+        1,
         null
       ],
       "/Users/otsuka.taku/pilotprojectwiki/app/models/application_record.rb": [
@@ -129,6 +128,6 @@
         0
       ]
     },
-    "timestamp": 1528872325
+    "timestamp": 1528963171
   }
 }
