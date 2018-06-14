@@ -1,0 +1,130 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/otsuka.taku/pilotprojectwiki/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/helpers/users_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/controllers/users_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/otsuka.taku/pilotprojectwiki/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1528883723
+  }
+}
