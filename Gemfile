@@ -67,3 +67,4 @@ gem "jquery-rails"
 gem "simplecov"
 gem "factory_bot_rails"
 gem 'rails-controller-testing'
+gem "rails-i18n"
