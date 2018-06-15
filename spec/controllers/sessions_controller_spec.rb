@@ -7,13 +7,14 @@ RSpec.describe SessionsController, type: :controller do
       get :new
     end
 
-    it "returns http success" do
-      expect(response).to be_successful
-    end
+    it { expect(response).to be_successful }
   end
 
   describe "POST #create" do
     context "valid" do
+      before do
+        post :create,
+      end
     end
 
     context "invalid" do
