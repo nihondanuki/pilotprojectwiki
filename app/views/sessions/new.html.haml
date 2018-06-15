@@ -1,2 +1,14 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+	%h1 ログイン
+
+  = form_for @user do |f|
+    .form.form-group
+      = f.label :email
+      = f.email_field :email, class: "form-control"
+    .form.form-group
+      = f.label :password
+      = f.password_field :password, class: "form-control"
+    .actions
+      = f.submit 'Login'
+
+  %p ユーザー登録
+  = link_to "Sign up now!", controller: user, acton: new
