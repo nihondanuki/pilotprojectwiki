@@ -1,0 +1,9 @@
+%header
+  .container
+    %nav
+      %ul
+        - if logged_in?
+          = link_to "ログアウト", logout_path, method: :delete
+          = current_user.name
+        - else
+          = link_to "ログイン", login_path
