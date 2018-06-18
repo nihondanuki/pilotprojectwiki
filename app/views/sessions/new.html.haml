@@ -1,6 +1,9 @@
-	%h1 ログイン
+.container
+  %h1 ログイン
 
-  = form_for @user do |f|
+  - flash.each do |key,value|
+    = content_tag(:div, value, class: "#{key}")
+  = form_for :session, url: login_path do |f|
     .form.form-group
       = f.label :email
       = f.email_field :email, class: "form-control"

@@ -14,14 +14,14 @@ RSpec.describe UsersController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       let(:user){build(:user)}
-      it "creates a new User" do
-        expect { post :create, params: { user: attributes_for(:user) } }.to change(User, :count).by(1)
-      end
+      it { expect { post :create, params: { user: attributes_for(:user) } }.to change(User, :count).by(1) }
 
       it "redirects to the created user" do
         post :create, params: { user: attributes_for(:user) }
         expect(response).to redirect_to(User.last)
       end
+
+      it
     end
 
     context "with invalid params" do
