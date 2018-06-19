@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "POST #create" do
     context "valid" do
-      let!(:user){create(:user)}
+      let(:user){create(:user)}
       before do
         post :create, params: { session: { email: user.email, password: user.password }}
       end
@@ -19,7 +19,7 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     context "invalid" do
-      let!(:user){create(:user)}
+      let(:user){create(:user)}
       before do
         post :create, params: { session: { email: "foo", password: user.password }}
       end
@@ -27,6 +27,11 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy"
+  describe "DELETE #destroy" do
+    before do
+      delete :destroy
+    end
+    it { expect(response).to render_template "new" }
+  end
 
 end

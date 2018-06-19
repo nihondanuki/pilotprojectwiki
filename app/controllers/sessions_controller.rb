@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    render 'new'
   end
 
   private
