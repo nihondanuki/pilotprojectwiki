@@ -7,5 +7,6 @@ class CreateInquiries < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :inquiries, [:user_id, :created_at]
   end
 end
