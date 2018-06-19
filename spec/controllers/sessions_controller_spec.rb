@@ -20,10 +20,26 @@ RSpec.describe SessionsController, type: :controller do
 
     context "invalid" do
       let(:user){create(:user)}
-      before do
-        post :create, params: { session: { email: "foo", password: user.password }}
+      context "email is invalid" do
+        before do
+          post :create, params: { session: { email: "foo", password: user.password }}
+        end
+        it { expect(response).to render_template "new" }
       end
-      it { expect(response).to render_template "new" }
+
+      context "password is invalid" do
+        before do
+          post :create, params: { session: { email: user.email, password: "foo" }}
+        end
+        it { expect(response).to render_template "new" }
+      end
+
+      context "email is nil" do
+        before do
+          post :create, params: { session: { email: nil, password: user.password }}
+        end
+        it { expect(response).to render_template "new" }
+      end
     end
   end
 
