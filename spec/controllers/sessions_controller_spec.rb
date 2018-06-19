@@ -2,51 +2,39 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
   describe "GET #new" do
-    before do
-      get :new
-    end
+    before { get :new }
 
     it { expect(response).to be_successful }
   end
 
   describe "POST #create" do
-    context "valid" do
+    context "login params is valid" do
       let(:user){create(:user)}
-      before do
-        post :create, params: { session: { email: user.email, password: user.password }}
-      end
+      before { post :create, params: { session: { email: user.email, password: user.password }} }
       it { expect(response).to redirect_to user }
     end
 
-    context "invalid" do
+    context "login params is invalid" do
       let(:user){create(:user)}
       context "email is invalid" do
-        before do
-          post :create, params: { session: { email: "foo", password: user.password }}
-        end
+        before { post :create, params: { session: { email: "foo", password: user.password }} }
         it { expect(response).to render_template "new" }
       end
 
       context "password is invalid" do
-        before do
-          post :create, params: { session: { email: user.email, password: "foo" }}
-        end
+        before { post :create, params: { session: { email: user.email, password: "foo" }} }
         it { expect(response).to render_template "new" }
       end
 
       context "email is nil" do
-        before do
-          post :create, params: { session: { email: nil, password: user.password }}
-        end
+        before { post :create, params: { session: { email: nil, password: user.password }} }
         it { expect(response).to render_template "new" }
       end
     end
   end
 
   describe "DELETE #destroy" do
-    before do
-      delete :destroy
-    end
+    before { delete :destroy }
     it { expect(response).to render_template "new" }
   end
 
