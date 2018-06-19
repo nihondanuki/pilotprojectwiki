@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   def new
   end
-<<<<<<< Updated upstream
-=======
 
   def create
     user = User.find_by(session_params_email)
