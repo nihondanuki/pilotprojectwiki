@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :inquiry do
-    body "MyText"
-    subject "MyString"
-    user nil
+    body "イートハーブのなんとか"
+    subject "gitの使い方を教えてほしい"
+    association :user
   end
 end
