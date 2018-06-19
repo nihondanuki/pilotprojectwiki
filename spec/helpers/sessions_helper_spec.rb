@@ -16,20 +16,20 @@ RSpec.describe SessionsHelper, type: :helper do
   describe "#log_in" do
     context do
       let!(:user){create(:user)}
-      it do
+      before do
         log_in user
-        expect(session[:user_id]).to eq user.id
       end
+      it { expect(session[:user_id]).to eq user.id }
     end
   end
 
   describe "#current_user" do
     context do
       let!(:user){create(:user)}
-      it do
+      before do
         session[:user_id] = user.id
-        expect(current_user).to eq user
       end
+      it { expect(current_user).to eq user }
     end
   end
 
@@ -38,10 +38,9 @@ RSpec.describe SessionsHelper, type: :helper do
     before do
       session[:user_id] = user.id
       current_user
-    end
-    it do
       log_out
-      expect(current_user).to eq nil
     end
+    it { expect(current_user).to eq nil }
+    it { expect(session[:user_id]).to eq nil }
   end
 end
