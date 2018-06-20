@@ -5,13 +5,13 @@
     = content_tag(:div, value, class: "#{key}")
   = form_for :session, url: login_path do |f|
     .form.form-group
-      = f.label :email
+      = f.label "メールアドレス"
       = f.email_field :email, class: "form-control"
     .form.form-group
-      = f.label :password
+      = f.label "パスワード"
       = f.password_field :password, class: "form-control"
     .actions
-      = f.submit 'Login'
+      = f.submit 'ログイン'
 
   %p ユーザー登録
-  = link_to "ログイン", "users/new"
+  = link_to "登録", new_user_path

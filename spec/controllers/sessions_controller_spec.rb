@@ -36,7 +36,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "DELETE #destroy" do
     before { delete :destroy }
-    it { is_expected.to render_template "new" }
+    it { is_expected.to redirect_to login_path }
   end
 
 end
