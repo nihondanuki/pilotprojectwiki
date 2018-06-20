@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    render 'new'
+    redirect_to login_path
   end
 
   private

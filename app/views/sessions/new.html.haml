@@ -1,2 +1,17 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+.container
+  %h1 ログイン
+
+  - flash.each do |key,value|
+    = content_tag(:div, value, class: "#{key}")
+  = form_for :session, url: login_path do |f|
+    .form.form-group
+      = f.label "メールアドレス"
+      = f.email_field :email, class: "form-control"
+    .form.form-group
+      = f.label "パスワード"
+      = f.password_field :password, class: "form-control"
+    .actions
+      = f.submit 'ログイン'
+
+  %p ユーザー登録
+  = link_to "登録", new_user_path
