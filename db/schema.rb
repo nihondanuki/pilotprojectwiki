@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 20180619061733) do
 
   create_table "inquiries", force: :cascade do |t|
-    t.text "body"
-    t.string "subject"
-    t.integer "user_id"
+    t.text "body", null: false
+    t.string "subject", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_inquiries_on_user_id_and_created_at"
