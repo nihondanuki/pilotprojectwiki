@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def login_watch
       unless logged_in?
-        flash.now[:danger] = "ログインが必要です"
+        flash[:danger] = "ログインが必要です"
         redirect_to login_url
       end
     end
