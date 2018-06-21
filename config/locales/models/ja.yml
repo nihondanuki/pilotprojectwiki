@@ -2,9 +2,13 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      inquiry: 質問
     attributes:
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: もう一度入力 
+      inquiry:
+        subject: タイトル
+        body: 本文
