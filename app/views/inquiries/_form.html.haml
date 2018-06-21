@@ -6,5 +6,11 @@
         - @inquiry.errors.full_messages.each do |message|
           %li= message
 
+  .form.form-group
+    = f.label :subject
+    = f.text_field :subject, class: "form-control"
+  .form.form-group
+    = f.label :body
+    = f.text_area :body, rows: 20, class: "form-control"
   .actions
-    = f.submit 'Save'
+    = f.submit '質問を投稿する'
