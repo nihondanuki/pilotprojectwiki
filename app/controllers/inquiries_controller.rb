@@ -15,7 +15,7 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    @inquiry = current_user.inquiry.build
+    @inquiry = current_user.inquiries.build
   end
 
   # GET /inquiries/1/edit
@@ -25,7 +25,7 @@ class InquiriesController < ApplicationController
   # POST /inquiries
   # POST /inquiries.json
   def create
-    @inquiry = current_user.inquiry.build(inquiry_params)
+    @inquiry = current_user.inquiries.build(inquiry_params)
 
     respond_to do |format|
       if @inquiry.save
