@@ -1,5 +1,6 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
+  before_action :login_watch, only: [:update, :new, :create, :edit, :destroy]
 
   # GET /inquiries
   # GET /inquiries.json
@@ -14,7 +15,7 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    @inquiry = Inquiry.new
+    @inquiry = current_user.inquiry.build
   end
 
   # GET /inquiries/1/edit
@@ -24,15 +25,13 @@ class InquiriesController < ApplicationController
   # POST /inquiries
   # POST /inquiries.json
   def create
-    @inquiry = Inquiry.new(inquiry_params)
+    @inquiry = current_user.inquiry.build(inquiry_params)
 
     respond_to do |format|
       if @inquiry.save
         format.html { redirect_to @inquiry, notice: 'Inquiry was successfully created.' }
-        format.json { render :show, status: :created, location: @inquiry }
       else
         format.html { render :new }
-        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +68,6 @@ class InquiriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
-      params.fetch(:inquiry, {})
+      params.require(:inquiry).permit(:subject, :body)
     end
 end
