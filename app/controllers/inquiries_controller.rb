@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
-  before_action :login_watch, only: [:update, :new, :create, :edit, :destroy]
+  before_action :login_watch, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /inquiries
   # GET /inquiries.json

@@ -1,4 +1,4 @@
-= form_for @inquiry do |f|
+= form_with @inquiry do |f|
   - if @inquiry.errors.any?
     #error_explanation
       %h2= "#{pluralize(@inquiry.errors.count, "error")} prohibited this inquiry from being saved:"
