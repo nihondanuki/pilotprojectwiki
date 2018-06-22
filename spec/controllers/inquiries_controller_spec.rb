@@ -5,7 +5,7 @@ RSpec.describe InquiriesController, type: :controller do
 
   describe "GET #new" do
     context "ログイン中" do
-      let(:user){create(:user)}
+      let(:user) { create(:user) }
       before do
         session[:user_id] = user.id
         get :new
@@ -22,8 +22,8 @@ RSpec.describe InquiriesController, type: :controller do
 
   describe "POST #create" do
     context "ログイン時" do
-      let!(:user){create(:user)}
-      let(:inquiry_params){attributes_for(:inquiry)}
+      let!(:user) { create(:user) }
+      let(:inquiry_params) { attributes_for(:inquiry) }
       before do
         session[:user_id] = user.id
       end
@@ -41,7 +41,7 @@ RSpec.describe InquiriesController, type: :controller do
 		end
 
     context "ログアウト状態" do
-      let(:inquiry_params){attributes_for(:inquiry)}
+      let(:inquiry_params) { attributes_for(:inquiry) }
 			subject{ post :create, params: { inquiry: inquiry_params } }
       it { is_expected.to redirect_to login_path }
     end
