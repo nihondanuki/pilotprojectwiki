@@ -28,9 +28,10 @@ RSpec.describe InquiriesController, type: :controller do
         session[:user_id] = user.id
       end
       context "投稿がvalid" do
-        subject{ post :create, params: { inquiry: inquiry_params } }
+        before { post :create, params: { inquiry: inquiry_params } }
         it { expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1) }
         it { is_expected.to redirect_to Inquiry.last }
+        it { expect(Inquiry.last.user).to eq user }
       end
 
       context "投稿がinvalid" do
