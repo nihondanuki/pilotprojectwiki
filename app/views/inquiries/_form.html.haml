@@ -1,4 +1,4 @@
-= form_with @inquiry do |f|
+= form_with model: Inquiry.new, local: true do |f|
   - if @inquiry.errors.any?
     #error_explanation
       %h2= "入力エラー"

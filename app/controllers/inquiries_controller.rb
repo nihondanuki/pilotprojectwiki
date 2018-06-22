@@ -43,8 +43,7 @@ class InquiriesController < ApplicationController
   # DELETE /inquiries/1
   def destroy
     @inquiry.destroy
-      redirect_to inquiries_url
-    end
+    redirect_to inquiries_url
   end
 
   private
