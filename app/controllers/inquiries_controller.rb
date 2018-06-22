@@ -2,22 +2,9 @@ class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
   before_action :login_watch, only: [:new, :edit, :create, :update, :destroy]
 
-  # GET /inquiries
-  def index
-    @inquiries = Inquiry.all
-  end
-
-  # GET /inquiries/1
-  def show
-  end
-
   # GET /inquiries/new
   def new
     @inquiry = current_user.inquiries.build
-  end
-
-  # GET /inquiries/1/edit
-  def edit
   end
 
   # POST /inquiries
@@ -29,21 +16,6 @@ class InquiriesController < ApplicationController
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /inquiries/1
-  def update
-    if @inquiry.update(inquiry_params)
-      redirect_to @inquiry
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /inquiries/1
-  def destroy
-    @inquiry.destroy
-    redirect_to inquiries_url
   end
 
   private
