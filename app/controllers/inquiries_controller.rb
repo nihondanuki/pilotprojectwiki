@@ -12,7 +12,7 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    @inquiry = current_user.inquiries.build
+    @inquiry = MakeInquiryPostSlack.new(current_user.inquiries.build)
   end
 
   def edit
@@ -20,10 +20,10 @@ class InquiriesController < ApplicationController
 
   # POST /inquiries
   def create
-    @inquiry = current_user.inquiries.build(inquiry_params)
+    @inquiry = MakeInquiryPostSlack.new(current_user.inquiries.build(inquiry_params))
 
     if @inquiry.save
-      redirect_to @inquiry
+      redirect_to @inquiry.inquiry
     else
       render :new
     end
