@@ -17,10 +17,13 @@ class MakeInquiryPostSlack
   private
 
     def post_slack
+      slack.post text: "質問 #{@inquiry.subject}"
+    end
+  
+    def slack
       notifier = Slack::Notifier.new(
         "https://hooks.slack.com/services/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",
         username: "通知"
       )
-      notifier.post text: "質問 #{@inquiry.subject}"
     end
 end
