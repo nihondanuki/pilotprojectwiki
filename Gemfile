@@ -71,3 +71,4 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "rails-i18n"
 gem 'slack-notifier'
+gem 'dotenv-rails'
