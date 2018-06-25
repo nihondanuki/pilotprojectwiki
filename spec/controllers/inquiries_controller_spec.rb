@@ -34,13 +34,13 @@ RSpec.describe InquiriesController, type: :controller do
         subject{ post :create, params: { inquiry: attributes_for(:inquiry, subject: "a"*31) } }
         it { is_expected.to render_template "new" }
       end
-		end
+    end
 
     context "ログアウト状態" do
       let(:inquiry_params) { attributes_for(:inquiry) }
-			subject{ post :create, params: { inquiry: inquiry_params } }
+      subject{ post :create, params: { inquiry: inquiry_params } }
       it { is_expected.to redirect_to login_path }
     end
-	end
+  end
 
 end
