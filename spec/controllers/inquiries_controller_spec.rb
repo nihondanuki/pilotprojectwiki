@@ -7,15 +7,13 @@ RSpec.describe InquiriesController, type: :controller do
     context "ログイン中" do
       let(:user) { create(:user) }
       before do
-        session[:user_id] = user.id
+        log_in user
         get :new
       end
       it { expect(response).to have_http_status :ok }
     end
     context "ログアウト状態" do
-      before do
-        get :new
-      end
+      before { get :new }
       it { is_expected.to redirect_to login_path }
     end
   end
@@ -24,9 +22,7 @@ RSpec.describe InquiriesController, type: :controller do
     context "ログイン時" do
       let!(:user) { create(:user) }
       let(:inquiry_params) { attributes_for(:inquiry) }
-      before do
-        session[:user_id] = user.id
-      end
+      before { log_in user }
       context "投稿がvalid" do
         before { post :create, params: { inquiry: inquiry_params } }
         it { expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1) }
