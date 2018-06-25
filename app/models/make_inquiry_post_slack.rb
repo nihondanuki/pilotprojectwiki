@@ -1,5 +1,6 @@
 class MakeInquiryPostSlack
   include ActiveModel::Model
+  Dotenv.load
   define_model_callbacks :save, only: :after
   after_save :post_slack
   attr_reader :inquiry
@@ -22,7 +23,7 @@ class MakeInquiryPostSlack
   
     def slack
       notifier = Slack::Notifier.new(
-        "https://hooks.slack.com/services/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",
+        ENV["SLACK_WEBHOOK"],
         username: "通知"
       )
     end
