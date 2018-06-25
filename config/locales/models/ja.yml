@@ -8,7 +8,7 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
-        password_confirmation: もう一度入力 
+        password_confirmation: パスワード(確認)
       inquiry:
         subject: タイトル
         body: 本文
