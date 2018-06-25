@@ -3,6 +3,10 @@ class InquiriesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :create, :update]
   before_action :require_permit, only: [:edit, :update]
 
+  def index
+    @inquiries = Inquiry.order(created_at: :desc)
+  end
+
   # GET /inquiries/new
   def new
     @inquiry = current_user.inquiries.build

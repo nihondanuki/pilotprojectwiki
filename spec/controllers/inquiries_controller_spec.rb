@@ -3,6 +3,14 @@ require 'rails_helper'
 RSpec.describe InquiriesController, type: :controller do
   subject{response}
 
+  describe "GET #index" do
+    before { get :index }
+    it :aggregate_failures do
+      is_expected.to render_template "index"
+      expect(assigns(:inquiries)).to eq Inquiry.order(created_at: :desc)
+    end
+  end
+
   describe "GET #new" do
     context "ログイン中" do
       let(:user) { create(:user) }
