@@ -4,4 +4,5 @@
   .container.well
     = simple_format(@inquiry.body)
   = link_to "一覧を表示する", inquiries_path
-  = link_to "編集する", edit_inquiry_path
+  - if (current_user == @inquiry.user)
+    = link_to "編集する", edit_inquiry_path
