@@ -74,7 +74,7 @@ RSpec.describe InquiriesController, type: :controller do
 
   describe "PATCH #update" do
     context "ログイン時" do
-      context "ユーザーが質問の作成者である" do
+      context "ユーザー = 質問の作成者" do
         let(:inquiry) { create(:inquiry) }
         before { log_in inquiry.user }
         context "投稿がvalid" do
@@ -85,6 +85,16 @@ RSpec.describe InquiriesController, type: :controller do
           before { patch :update, params: { id: inquiry.id, inquiry: attributes_for(:inquiry, body: "a"*1002) } }
           it { is_expected.to render_template "edit" }
         end
+      end
+
+      context "ユーザー != 質問の作成者" do
+        let(:inquiry) { create(:inquiry) }
+        let(:invalid_user) { create(:user, email: "create@a.com") }
+        before do
+          log_in invalid_user
+          patch :update, params: { id: inquiry.id, inquiry: attributes_for(:inquiry, body: "body") } 
+        end
+        it { is_expected.to redirect_to inquiry }
       end
     end
 
