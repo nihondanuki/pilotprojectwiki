@@ -50,9 +50,9 @@ RSpec.describe InquiriesController, type: :controller do
       context "投稿がvalid" do
         before { post :create, params: { inquiry: inquiry_params } }
         it :aggregate_failures do
-          expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1) }
-          is_expected.to redirect_to Inquiry.last }
-          expect(Inquiry.last.user).to eq user }
+          expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1)
+          is_expected.to redirect_to Inquiry.last
+          expect(Inquiry.last.user).to eq user
         end
       end
 
