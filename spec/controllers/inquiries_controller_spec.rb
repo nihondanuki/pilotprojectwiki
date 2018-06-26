@@ -31,7 +31,7 @@ RSpec.describe InquiriesController, type: :controller do
 
       context "ユーザーは作成者じゃない場合" do
         let(:inquiry) { create(:inquiry) }
-        let(:invalid_user) { User.create(attributes_for(:user, email: "invalid@x.com"))}
+        let(:invalid_user) { create(:user, email: "invalid@x.com")}
         before do
           log_in invalid_user
           get :edit, params: { id: inquiry.id }
