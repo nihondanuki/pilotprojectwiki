@@ -17,6 +17,15 @@ RSpec.describe InquiriesController, type: :controller do
     end
   end
 
+  describe "GET #show" do
+    let(:inquiry) { create(:inquiry) }
+    before { get :show, params: { id: inquiry.id } }
+    it :aggregate_failures do
+      is_expected.to render_template "show"
+      expect(assigns(:inquiry)).to eq Inquiry.find(inquiry.id)
+    end
+  end
+
   describe "GET #new" do
     context "ログイン中" do
       let(:user) { create(:user) }
