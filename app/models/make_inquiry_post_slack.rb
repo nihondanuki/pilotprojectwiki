@@ -22,7 +22,7 @@ class MakeInquiryPostSlack
   
     def slack
       notifier = Slack::Notifier.new(
-        "",
+        "https://hooks.slack.com/services/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",
         username: "通知"
       )
     end
