@@ -42,8 +42,6 @@ class InquiriesController < ApplicationController
     end
 
     def require_permit
-      unless (current_user == @inquiry.user)
-        redirect_to @inquiry
-      end
+      redirect_to @inquiry if current_user != @inquiry.user
     end
 end

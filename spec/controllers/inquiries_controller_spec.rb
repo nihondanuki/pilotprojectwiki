@@ -23,13 +23,15 @@ RSpec.describe InquiriesController, type: :controller do
     let(:inquiry) { create(:inquiry) }
     context "ログイン中" do
       before { log_in user }
-      context "ユーザーが質問の作成者である" do
+      context "ユーザーと質問の作成者が同じ" do
         let(:user) { inquiry.user }
-        it { is_expected.to have_http_status :ok }
-        it { is_expected.to render_template "edit" }
+        it :aggregate_failures do
+          is_expected.to have_http_status :ok
+          is_expected.to render_template "edit"
+        end
       end
 
-      context "ユーザーは作成者じゃない場合" do
+      context "ユーザーと質問の作成者が違う" do
         let(:user) { create(:user, email: "invalid@x.com")}
         it { is_expected.to redirect_to inquiry }
       end
@@ -47,9 +49,11 @@ RSpec.describe InquiriesController, type: :controller do
       before { log_in user }
       context "投稿がvalid" do
         before { post :create, params: { inquiry: inquiry_params } }
-        it { expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1) }
-        it { is_expected.to redirect_to Inquiry.last }
-        it { expect(Inquiry.last.user).to eq user }
+        it :aggregate_failures do
+          expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1) }
+          is_expected.to redirect_to Inquiry.last }
+          expect(Inquiry.last.user).to eq user }
+        end
       end
 
       context "投稿がinvalid" do
@@ -59,15 +63,15 @@ RSpec.describe InquiriesController, type: :controller do
     end
 
     context "ログアウト状態" do
-      let(:inquiry_params) { attributes_for(:inquiry) }
       subject{ post :create, params: { inquiry: inquiry_params } }
+      let(:inquiry_params) { attributes_for(:inquiry) }
       it { is_expected.to redirect_to login_path }
     end
   end
 
   describe "PATCH #update" do
     context "ログイン時" do
-      context "ユーザー = 質問の作成者" do
+      context "ユーザーと質問の作成者が同じ" do
         subject { patch :update, params: { id: inquiry.id, inquiry: update_inquiry } }
         let(:inquiry) { create(:inquiry) }
         before { log_in inquiry.user }
@@ -81,7 +85,7 @@ RSpec.describe InquiriesController, type: :controller do
         end
       end
 
-      context "ユーザー != 質問の作成者" do
+      context "ユーザーと質問の作成者が違う" do
         let(:inquiry) { create(:inquiry) }
         let(:invalid_user) { create(:user, email: "create@a.com") }
         before do
