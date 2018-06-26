@@ -4,7 +4,7 @@
   = form_with model: @inquiry, local: true do |f|
     - if @inquiry.errors.any?
       #error_explanation
-        %h2= "入力エラー"
+        %h2 入力エラー
         %ul
           - @inquiry.errors.full_messages.each do |message|
             %li= message

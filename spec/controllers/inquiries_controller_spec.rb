@@ -26,6 +26,7 @@ RSpec.describe InquiriesController, type: :controller do
       context "ユーザーが質問の作成者である" do
         let(:user) { inquiry.user }
         it { is_expected.to have_http_status :ok }
+        it { is_expected.to render_template "edit" }
       end
 
       context "ユーザーは作成者じゃない場合" do
@@ -92,8 +93,8 @@ RSpec.describe InquiriesController, type: :controller do
     end
 
     context "ログアウト状態" do
-      let(:inquiry) { create(:inquiry) }
       subject{ patch :update, params: { id: inquiry.id, inquiry: attributes_for(:inquiry, body: "body") } }
+      let(:inquiry) { create(:inquiry) }
       it { is_expected.to redirect_to login_path }
     end
   end
