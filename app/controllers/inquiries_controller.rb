@@ -7,6 +7,9 @@ class InquiriesController < ApplicationController
     @inquiries = Inquiry.order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def show
+  end
+
   # GET /inquiries/new
   def new
     @inquiry = current_user.inquiries.build
