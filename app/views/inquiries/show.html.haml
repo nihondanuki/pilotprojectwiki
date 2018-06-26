@@ -6,3 +6,13 @@
   = link_to "一覧を表示する", inquiries_path
   - if @inquiry.posted_by?(current_user)
     = link_to "編集する", edit_inquiry_path
+
+  .container
+    - @answers.each do |answer|
+      = simple_format(answer.content)
+    = form_with model: Answer.new, local: true do |f|
+      .form.form-group
+        = f.label :content
+        = f.text_area :content, rows: 10, class: "form-control"
+      .actions
+        = f.submit '回答する'
