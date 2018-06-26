@@ -1,18 +1,13 @@
-class AnswerController < ApplicationController
+class AnswersController < ApplicationController
   def create
-    binding.pry
-    inquiry ||= Inquiry.find(inquiry_id)
-    @answer = inquiry.answers.build(answer_params)
-    @answer.user = current_user
+    inquiry ||= Inquiry.find(answer_params[:inquiry])
+    @answer = inquiry.answers.create(content: answer_params[:content], user_id: current_user.id)
     redirect_to inquiry
   end
 
   private
-    def inquiry_id
-      params.require(:inquiry).permit(:id).[:id]
+    def answer_params
+      params.require(:answer).permit(:inquiry, :content)
     end
 
-    def answer_params
-      params.require(:answer).permit(:context)
-    end
 end
