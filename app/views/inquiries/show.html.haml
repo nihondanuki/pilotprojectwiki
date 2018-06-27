@@ -9,10 +9,14 @@
 
   .container
     - @answers.each do |answer|
-      = simple_format(answer.content)
-    = form_with model: Answer.new, local: true do |f|
-      .form.form-group
-        = f.label :content
-        = f.text_area :content, rows: 10, class: "form-control"
-      .actions
-        = f.submit '回答する'
+      .panel.panel-primary
+        .panel-heading= answer.user.name
+        .panel-body.word-wrap= simple_format(answer.content)
+    - if logged_in?
+      = form_with model: Answer.new, local: true do |f|
+        .form.form-group
+          = f.label :content
+          = f.text_area :content, rows: 10, class: "form-control"
+        = f.hidden_field :inquiry, :value => @inquiry.id
+        .actions
+          = f.submit '回答する'
