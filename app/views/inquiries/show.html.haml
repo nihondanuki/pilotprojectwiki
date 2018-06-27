@@ -11,7 +11,7 @@
     - @answers.each do |answer|
       .panel.panel-primary
         .panel-heading= answer.user.name
-        .panel-body.word-wrap= simple_format(answer.content)
+        .panel-body.answer-content= simple_format(answer.content)
     - if logged_in?
       = form_with model: Answer.new, local: true do |f|
         .form.form-group
