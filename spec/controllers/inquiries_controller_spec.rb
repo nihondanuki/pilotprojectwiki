@@ -9,8 +9,8 @@ RSpec.describe InquiriesController, type: :controller do
   end
 
   describe "GET #show" do
+    subject { get :show, params: { id: inquiry.id } }
     let(:inquiry) { create(:inquiry) }
-    before { get :show, params: { id: inquiry.id } }
     it :aggregate_failures do
       is_expected.to render_template "show"
       expect(assigns(:inquiry)).to eq Inquiry.find(inquiry.id)
