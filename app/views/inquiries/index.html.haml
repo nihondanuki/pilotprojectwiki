@@ -1,0 +1,16 @@
+.container
+  %h1 質問一覧
+
+  %table.table
+    %thead
+      %tr
+        %th 投稿者
+        %th id
+        %th 質問
+    %tbody
+      - @inquiries.each do |inquiry|
+        %tr
+          %td= inquiry.user.name
+          %td= inquiry.id
+          %td= link_to inquiry.subject, inquiry
+  = paginate @inquiries

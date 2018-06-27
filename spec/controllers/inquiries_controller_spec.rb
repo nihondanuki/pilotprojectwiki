@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe InquiriesController, type: :controller do
   subject{response}
 
+  describe "GET #index" do
+    subject { get :index }
+    it { is_expected.to render_template "index" }
+  end
+
   describe "GET #new" do
     context "ログイン中" do
       let(:user) { create(:user) }
