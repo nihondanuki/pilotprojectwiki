@@ -45,6 +45,11 @@ RSpec.describe InquiriesController, type: :controller do
     context "ログアウト状態" do
       it { is_expected.to redirect_to login_path }
     end
+
+    context "idで指定された質問がない場合" do
+      subject { get :edit, params: { id: 1 } }
+      it { is_expected.to redirect_to inquiries_path }
+    end
   end
 
   describe "POST #create" do
@@ -105,6 +110,11 @@ RSpec.describe InquiriesController, type: :controller do
       subject{ patch :update, params: { id: inquiry.id, inquiry: attributes_for(:inquiry, body: "body") } }
       let(:inquiry) { create(:inquiry) }
       it { is_expected.to redirect_to login_path }
+    end
+
+    context "idで指定された質問がない場合" do
+      subject { get :edit, params: { id: 1 } }
+      it { is_expected.to redirect_to inquiries_path }
     end
   end
 
