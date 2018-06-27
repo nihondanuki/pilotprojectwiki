@@ -4,7 +4,7 @@ class InquiriesController < ApplicationController
   before_action :require_permit, only: [:edit, :update]
 
   def index
-    @inquiries = Inquiry.order(created_at: :desc)
+    @inquiries = Inquiry.page(params[:page]).per(10)
   end
 
   # GET /inquiries/new
