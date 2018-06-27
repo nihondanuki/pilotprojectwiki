@@ -41,8 +41,6 @@ class InquiriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_inquiry
       @inquiry ||= Inquiry.find(params[:id])
-    rescue
-      redirect_to inquiries_path
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
