@@ -28,10 +28,16 @@ RSpec.describe Inquiry, type: :model do
   describe '#posted_by?' do
     let(:inquiry) { create(:inquiry) }
     subject { inquiry.posted_by?(user) }
-    context "ユーザーが質問をユーザーである" do
+    context "ユーザーが質問をしたユーザーである" do
       let(:user) { inquiry.user }
       it { is_expected.to eq true }
     end
+
+    context "ユーザーが質問をしたユーザーと別のユーザー" do
+      let(:user) { create(:user, email: "a@a.a") }
+      it { is_expected.to eq false }
+    end
+
   end
   
 end
