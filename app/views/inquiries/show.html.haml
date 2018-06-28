@@ -4,5 +4,5 @@
   .container.well
     = simple_format(@inquiry.body)
   = link_to "一覧を表示する", inquiries_path
-  - unless permited_user?(@inquiry)
+  - if @inquiry.posted_by?(current_user)
     = link_to "編集する", edit_inquiry_path

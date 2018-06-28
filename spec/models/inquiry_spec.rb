@@ -24,5 +24,14 @@ RSpec.describe Inquiry, type: :model do
   describe '#has_many answer' do
     it { is_expected.to have_many(:answers)}
   end
+
+  describe '#posted_by?' do
+    let(:inquiry) { create(:inquiry) }
+    subject { inquiry.posted_by?(user) }
+    context "ユーザーが質問をユーザーである" do
+      let(:user) { inquiry.user }
+      it { is_expected.to eq true }
+    end
+  end
   
 end
