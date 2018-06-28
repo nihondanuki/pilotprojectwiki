@@ -1,7 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update]
   before_action :require_login, only: [:new, :edit, :create, :update]
-  before_action :require_permit, only: [:edit, :update]
+  before_action :my_allowed_admin, only: [:edit, :update]
 
   def index
     @inquiries = Inquiry.order(created_at: :desc).page(params[:page]).per(10)
@@ -48,7 +48,7 @@ class InquiriesController < ApplicationController
       params.require(:inquiry).permit(:subject, :body)
     end
 
-    def require_permit
-      redirect_to @inquiry if current_user != @inquiry.user
+    def my_allowed_admin
+      redirect_to @inquiry unless permited_user?(@inquiry)
     end
 end
