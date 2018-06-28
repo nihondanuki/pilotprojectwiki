@@ -1,10 +1,13 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update]
   before_action :require_login, only: [:new, :edit, :create, :update]
-  before_action :require_permit, only: [:edit, :update]
+  before_action :edit_permition_require, only: [:edit, :update]
 
   def index
     @inquiries = Inquiry.order(created_at: :desc).page(params[:page]).per(10)
+  end
+
+  def show
   end
 
   # GET /inquiries/new
@@ -45,7 +48,7 @@ class InquiriesController < ApplicationController
       params.require(:inquiry).permit(:subject, :body)
     end
 
-    def require_permit
-      redirect_to @inquiry if current_user != @inquiry.user
+    def edit_permition_require
+      redirect_to @inquiry unless @inquiry.posted_by?(current_user)
     end
 end
