@@ -13,7 +13,7 @@
         .panel-heading= answer.user.name
         .panel-body.answer-content= simple_format(answer.content)
     - if logged_in?
-      = form_with model: Answer.new, local: true do |f|
+      = form_with model: Answer.new, local: true, url: inquiry_answers_path(@inquiry) do |f|
         .form.form-group
           = f.label :content
           = f.text_area :content, rows: 10, class: "form-control"
