@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
   describe "POST #create" do
-    subject { post :create, params: { answer: { inquiry: inquiry, content: answer.content } } }
+    subject { post :create, params: { inquiry_id: inquiry.id, answer: { inquiry: inquiry, content: answer.content } } }
     let(:user) { create(:user) }
     let(:inquiry) { create(:inquiry, user: user ) }
     let(:answer) { create(:answer, user: user, inquiry: inquiry) }
