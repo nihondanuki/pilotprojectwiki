@@ -8,6 +8,7 @@ class InquiriesController < ApplicationController
   end
 
   def show
+    @answers = @inquiry.answers.order(created_at: :desc)
   end
 
   # GET /inquiries/new
