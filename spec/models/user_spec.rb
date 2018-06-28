@@ -26,4 +26,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:inquiries)}
   end
 
+  describe '#has_many answer' do
+    it { is_expected.to have_many(:answers)}
+  end
 end

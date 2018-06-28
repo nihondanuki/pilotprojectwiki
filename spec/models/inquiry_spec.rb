@@ -20,5 +20,9 @@ RSpec.describe Inquiry, type: :model do
       it { is_expected.to validate_length_of(:subject).is_at_most(30) }
     end
   end
+
+  describe '#has_many answer' do
+    it { is_expected.to have_many(:answers)}
+  end
   
 end
