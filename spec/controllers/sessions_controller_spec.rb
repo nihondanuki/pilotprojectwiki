@@ -12,7 +12,7 @@ RSpec.describe SessionsController, type: :controller do
     context "login params is valid" do
       let(:user){create(:user)}
       before { post :create, params: { session: { email: user.email, password: user.password }} }
-      it { is_expected.to redirect_to user }
+      it { is_expected.to redirect_to inquiries_path }
     end
 
     context "login params is invalid" do
