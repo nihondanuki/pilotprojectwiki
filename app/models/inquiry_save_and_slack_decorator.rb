@@ -1,4 +1,4 @@
-class MakeInquiryPostSlack
+class InquirySaveAndSlackDecorator
   include ActiveModel::Model
   define_model_callbacks :save, only: :after
   after_save :post_slack

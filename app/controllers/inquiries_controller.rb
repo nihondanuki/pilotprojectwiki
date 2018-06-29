@@ -12,7 +12,7 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    @inquiry = MakeInquiryPostSlack.new(current_user.inquiries.build)
+    @inquiry = Inquiry.new
   end
 
   def edit
@@ -20,10 +20,10 @@ class InquiriesController < ApplicationController
 
   # POST /inquiries
   def create
-    @inquiry = MakeInquiryPostSlack.new(current_user.inquiries.build(inquiry_params))
+    @inquiry_post_slack = InquirySaveAndSlackDecorator.new(current_user.inquiries.build(inquiry_params))
 
-    if @inquiry.save
-      redirect_to @inquiry.inquiry
+    if @inquiry_post_slack.save
+      redirect_to @inquiry_post_slack.inquiry
     else
       render :new
     end
@@ -38,17 +38,16 @@ class InquiriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_inquiry
-      @inquiry ||= Inquiry.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
       params.require(:inquiry).permit(:subject, :body)
     end
 
     def edit_permition_require
       redirect_to @inquiry unless @inquiry.posted_by?(current_user)
+    end
+
+    def set_inquiry
+      @inquiry ||= Inquiry.find(params[:id])
     end
 end
