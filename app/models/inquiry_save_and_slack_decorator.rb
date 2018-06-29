@@ -1,5 +1,7 @@
 class InquirySaveAndSlackDecorator
+  require 'dotenv'
   include ActiveModel::Model
+  Dotenv.load
   define_model_callbacks :save, only: :after
   after_save :post_slack
   attr_reader :inquiry
@@ -22,7 +24,7 @@ class InquirySaveAndSlackDecorator
   
     def slack
       notifier = Slack::Notifier.new(
-        "https://hooks.slack.com/services/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",
+        ENV["WEB_SLACK"],
         username: "通知"
       )
     end
