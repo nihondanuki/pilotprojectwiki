@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "redirects to the created user" do
         post :create, params: { user: user }
-        expect(response).to redirect_to inquiries_path
+        expect(response).to redirect_to(User.last)
       end
 
     end
