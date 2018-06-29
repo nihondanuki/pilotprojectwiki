@@ -3,11 +3,8 @@
     .container-fluid
       .navbar-header
         %a.navbar-brand 質問アプリ
-        - if logged_in?
-          %a.navbar-brand
-            = link_to "質問を投稿", new_inquiry_path, class: "navbar-brand"
         %a.navbar-brand
-          = link_to "質問を表示", inquiries_path, class: "navbar-brand"
+          = link_to "質問を投稿", new_inquiry_path, class: "navbar-brand"
       .collapse.navbar-collapse.navbar-right
         -if logged_in?
           .navbar-text
