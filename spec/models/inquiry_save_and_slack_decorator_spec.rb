@@ -3,14 +3,28 @@ require "rails_helper"
 RSpec.describe InquirySaveAndSlackDecorator, type: :model do
   describe "#save" do
     context "保存に成功した場合" do
-      let(:inquiry) { instance_double(Inquiry, save: true, subject: "gitの使い方を教えて欲しい") }
-      let(:inquiry_slack_decorator) { InquirySaveAndSlackDecorator.new(inquiry) }
-      let(:post_slack) { instance_double(Slack::Notifier) }
+      context "slackへのpostが成功した場合" do
+        let(:inquiry) { instance_double(Inquiry, save: true, subject: "gitの使い方を教えて欲しい") }
+        let(:inquiry_slack_decorator) { InquirySaveAndSlackDecorator.new(inquiry) }
+        let(:post_slack) { instance_double(Slack::Notifier) }
 
-      it do
-        expect(post_slack).to receive(:post).with(text: "質問 #{inquiry.subject}")
-        expect(inquiry_slack_decorator).to receive(:slack).and_return(post_slack)
-        expect(inquiry_slack_decorator.save).to be_truthy
+        it do
+          expect(post_slack).to receive(:post).with(text: "質問 #{inquiry.subject}").and_return(true)
+          expect(inquiry_slack_decorator).to receive(:slack).and_return(post_slack)
+          expect(inquiry_slack_decorator.save).to be_truthy
+        end
+      end
+
+      context "slackへのpostが失敗した場合" do
+        let(:inquiry) { instance_double(Inquiry, save: true, subject: "gitの使い方を教えて欲しい") }
+        let(:inquiry_slack_decorator) { InquirySaveAndSlackDecorator.new(inquiry) }
+        let(:post_slack) { instance_double(Slack::Notifier) }
+
+        it do
+          expect(post_slack).to receive(:post).with(text: "質問 #{inquiry.subject}").and_return(false)
+          expect(inquiry_slack_decorator).to receive(:slack).and_return(post_slack)
+          expect(inquiry_slack_decorator.save).to be_truthy
+        end
       end
     end
 
