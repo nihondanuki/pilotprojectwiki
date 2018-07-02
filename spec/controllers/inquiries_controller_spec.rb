@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'dotenv'
+require 'webmock/rspec'
 
 RSpec.describe InquiriesController, type: :controller do
   subject{response}
@@ -66,6 +68,7 @@ RSpec.describe InquiriesController, type: :controller do
   end
 
   describe "POST #create" do
+    Dotenv.load
     subject { post :create, params: { inquiry: inquiry_params } }
     context "ログイン時" do
       let!(:user) { create(:user) }
@@ -73,6 +76,7 @@ RSpec.describe InquiriesController, type: :controller do
       before { log_in user }
       context "投稿がvalid" do
         it :aggregate_failures do
+          stub_request(:post, ENV["WEB_SLACK"])
           expect{ post :create, params: { inquiry: inquiry_params } }.to change{Inquiry.count}.by(1)
           is_expected.to redirect_to Inquiry.last
           expect(Inquiry.last.user).to eq user
