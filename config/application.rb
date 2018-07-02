@@ -16,5 +16,6 @@ module Pilotprojectwiki
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.i18n.default_locale = :ja
+    Dotenv::Railtie.load
   end
 end
