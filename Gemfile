@@ -68,6 +68,7 @@ gem "simplecov"
 gem "factory_bot_rails"
 gem 'rails-controller-testing'
 gem 'kaminari'
+gem 'webmock'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "rails-i18n"
 gem 'slack-notifier'
