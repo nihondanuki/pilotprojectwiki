@@ -11,7 +11,7 @@ class InquirySaveAndSlackDecorator
 
   def save
     run_callbacks :save do
-      @inquiry.save
+      inquiry.save
     end
   end
 
