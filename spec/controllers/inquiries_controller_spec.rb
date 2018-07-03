@@ -10,7 +10,7 @@ RSpec.describe InquiriesController, type: :controller do
 
   describe "GET #show" do
     let(:inquiry) { create(:inquiry) }
-    let(:answer) { create_list(:answer, 10, inquiry: inquiry, user: inquiry.user) }
+    let(:answer) { create_list(:answer, 2, inquiry: inquiry, user: inquiry.user) }
     before { get :show, params: { id: inquiry.id } }
     it :aggregate_failures do
       is_expected.to render_template "show"
