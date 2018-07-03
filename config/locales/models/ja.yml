@@ -12,3 +12,5 @@ ja:
       inquiry:
         subject: タイトル
         body: 本文
+      answer:
+        content: 回答
