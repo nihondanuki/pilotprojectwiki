@@ -18,7 +18,7 @@ class InquirySaveAndSlackDecorator
   private
 
     def post_slack
-      slack.post text: "質問 #{@inquiry.subject}"
+      slack.post text: "質問 #{inquiry.subject}"
     end
   
     def slack

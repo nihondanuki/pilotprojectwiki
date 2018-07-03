@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'dotenv'
-require 'webmock/rspec'
 
 RSpec.describe InquiriesController, type: :controller do
   subject{response}
@@ -68,7 +66,6 @@ RSpec.describe InquiriesController, type: :controller do
   end
 
   describe "POST #create" do
-    Dotenv.load
     WEB_SLACK = ENV["WEB_SLACK"]
     subject { post :create, params: { inquiry: inquiry_params } }
     context "ログイン時" do
